@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository_owner }}/proyecto-devops
+  IMAGE_NAME: ghcr.io/marcheloo-7/proyecto-devops
 
 jobs:
   build-test-security-docker:
