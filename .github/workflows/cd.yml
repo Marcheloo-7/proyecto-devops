@@ -1,0 +1,59 @@
+name: CD Pipeline
+
+on:
+  workflow_run:
+    workflows:
+      - CI Pipeline
+    types:
+      - completed
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  IMAGE_NAME: ghcr.io/marcheloo-7/proyecto-devops
+  IMAGE_TAG: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+jobs:
+  deploy-staging:
+    name: Deploy to Staging
+    runs-on: ubuntu-latest
+
+    if: >
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+
+    environment:
+      name: staging
+
+    steps:
+      - name: Show image selected for staging
+        run: |
+          echo "Deploying to STAGING"
+          echo "Image: $IMAGE_NAME:$IMAGE_TAG"
+
+      - name: Simulate staging deployment
+        run: |
+          echo "Pulling image from GHCR..."
+          echo "Deploying application to staging environment..."
+          echo "Staging deployment completed successfully."
+
+  deploy-production:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: deploy-staging
+
+    environment:
+      name: production
+
+    steps:
+      - name: Show image selected for production
+        run: |
+          echo "Deploying to PRODUCTION"
+          echo "Image: $IMAGE_NAME:$IMAGE_TAG"
+
+      - name: Simulate production deployment after approval
+        run: |
+          echo "Production approval received."
+          echo "Deploying application to production environment..."
+          echo "Production deployment completed successfully."
