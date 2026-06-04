@@ -1,0 +1,4 @@
+
+# Archivos temporales de imágenes Docker para escaneo
+security/*.tar
+security/*.tar.gz

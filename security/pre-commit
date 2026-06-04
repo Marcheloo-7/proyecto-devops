@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "Running Gitleaks..."
+
+docker run --rm \
+-v "$(pwd):/path" \
+zricethezav/gitleaks:latest detect \
+--source="/path"
+
+if [ $? -ne 0 ]; then
+  echo "Secrets detected."
+  exit 1
+fi
+
+echo "No secrets detected."
+exit 0
