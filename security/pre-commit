@@ -1,16 +1,14 @@
 #!/bin/sh
+echo "Running Gitleaks pre-commit scan..."
 
-echo "Running Gitleaks..."
+REPO_PATH=$(pwd -W)
 
-docker run --rm \
--v "$(pwd):/path" \
-zricethezav/gitleaks:latest detect \
---source="/path"
+MSYS_NO_PATHCONV=1 docker.exe run --rm -v "${REPO_PATH}:/repo" zricethezav/gitleaks:latest detect --source=/repo --redact --verbose
 
 if [ $? -ne 0 ]; then
-  echo "Secrets detected."
+  echo "Secrets detected or Gitleaks scan failed. Commit aborted."
   exit 1
 fi
 
-echo "No secrets detected."
+echo "No secrets detected. Commit allowed."
 exit 0
