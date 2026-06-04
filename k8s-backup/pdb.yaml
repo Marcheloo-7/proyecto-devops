@@ -1,0 +1,10 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: proyecto-devops-pdb
+  namespace: devops-staging
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: proyecto-devops

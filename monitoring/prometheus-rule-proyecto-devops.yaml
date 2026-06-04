@@ -1,0 +1,30 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: proyecto-devops-alerts
+  namespace: monitoring
+  labels:
+    release: prom
+spec:
+  groups:
+    - name: proyecto-devops.rules
+      rules:
+        - alert: ProyectoDevopsAppDown
+          expr: up{job="proyecto-devops"} == 0
+          for: 1m
+          labels:
+            severity: critical
+            service: proyecto-devops
+          annotations:
+            summary: "La aplicación Proyecto DevOps no está disponible"
+            description: "Prometheus no puede leer métricas de Proyecto DevOps durante más de 1 minuto."
+
+        - alert: ProyectoDevopsAvailabilityBelowSLO
+          expr: 100 * avg_over_time(up{job="proyecto-devops"}[5m]) < 99.9
+          for: 2m
+          labels:
+            severity: warning
+            service: proyecto-devops
+          annotations:
+            summary: "Disponibilidad menor al SLO definido"
+            description: "La disponibilidad de Proyecto DevOps está por debajo del SLO de 99.9%."

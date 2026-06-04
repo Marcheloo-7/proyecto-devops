@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: proyecto-devops-service
   namespace: devops-staging
-  labels:
-    app: proyecto-devops
 spec:
   type: ClusterIP
   selector:

@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: proyecto-devops
-          image: proyecto-devops:observability
+          image: proyecto-devops:local
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
