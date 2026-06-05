@@ -1,1 +1,4 @@
-deployment_id,workflow_run,commit_sha,commit_time,production_deploy_time,lead_time_minutes,result,change_failure,failure_detected_time,recovery_time,recovery_minutes,evidence
+deployment_id,workflow_run,commit_sha,commit_time,production_deploy_time,lead_time_seconds,lead_time_minutes,result,change_failure,failure_detected_time,recovery_time,recovery_minutes,evidence
+D1,CD Pipeline #1,d5e27abdde2b54fc3e477ee6da0bc773dc1dfe28,2026-06-02T21:33:41-05:00,2026-06-02T21:43:53-05:00,612,10.20,success,no,,,,https://github.com/Marcheloo-7/proyecto-devops/actions/runs/26860240520
+D2,CD Pipeline #3,053285d4f8de2acd71e30600db1ee90c608fb9b5,2026-06-03T21:58:50-05:00,2026-06-04T21:03:46-05:00,83096,1384.93,success,no,,,,https://github.com/Marcheloo-7/proyecto-devops/actions/runs/26990906835
+D3,CD Pipeline #4,76cef1683050898863271c0720f921f1535396ed,2026-06-04T21:22:48-05:00,2026-06-04T21:27:43-05:00,295,4.92,success,no,,,,https://github.com/Marcheloo-7/proyecto-devops/actions/runs/26991545487
