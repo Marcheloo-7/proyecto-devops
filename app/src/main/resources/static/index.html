@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Proyecto DevOps | Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header class="hero">
+        <nav class="nav" aria-label="Navegación principal">
+            <a class="brand" href="/app" aria-label="Inicio Proyecto DevOps">
+                <span class="brand-mark">PD</span>
+                <span>Proyecto DevOps</span>
+            </a>
+            <div class="nav-links">
+                <a href="#estado">Estado</a>
+                <a href="#devops">DevOps</a>
+                <a href="#equipo">Equipo</a>
+            </div>
+        </nav>
+
+        <section class="hero-content">
+            <p class="eyebrow">Dashboard operativo</p>
+            <h1>Monitoreo simple para tu aplicación Spring Boot</h1>
+            <p class="hero-copy">
+                Interfaz ligera para consultar el estado del servicio, validar el endpoint de ping
+                y acceder rápido a las rutas de observabilidad.
+            </p>
+            <div class="hero-actions">
+                <button id="refreshStatus" class="btn btn-primary" type="button">Actualizar estado</button>
+                <button id="healthButton" class="btn btn-secondary" type="button">Health</button>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <section id="estado" class="section grid-two">
+            <article class="card status-card">
+                <div class="card-heading">
+                    <div>
+                        <p class="eyebrow">Servicio</p>
+                        <h2>Estado de la aplicación</h2>
+                    </div>
+                    <span id="statusBadge" class="badge badge-muted">Consultando...</span>
+                </div>
+                <dl class="status-list">
+                    <div>
+                        <dt>Aplicación</dt>
+                        <dd id="appName">-</dd>
+                    </div>
+                    <div>
+                        <dt>Estado</dt>
+                        <dd id="appStatus">-</dd>
+                    </div>
+                    <div>
+                        <dt>Última consulta</dt>
+                        <dd id="lastChecked">-</dd>
+                    </div>
+                </dl>
+                <div class="health-panel">
+                    <div class="health-panel-heading">
+                        <strong>Resultado Health</strong>
+                        <a href="/actuator/health" target="_blank" rel="noreferrer">Abrir endpoint</a>
+                    </div>
+                    <pre id="healthResult" class="result" aria-live="polite">Haz clic en Health para consultar /actuator/health.</pre>
+                </div>
+            </article>
+
+            <article class="card">
+                <p class="eyebrow">Prueba rápida</p>
+                <h2>Ping API</h2>
+                <p class="muted">Valida que el backend responda correctamente desde el navegador.</p>
+                <button id="pingButton" class="btn btn-primary" type="button">Ejecutar ping</button>
+                <pre id="pingResult" class="result" aria-live="polite">Esperando ejecución...</pre>
+            </article>
+        </section>
+
+        <section id="devops" class="section">
+            <div class="section-heading">
+                <p class="eyebrow">Pipeline</p>
+                <h2>Componentes DevOps del proyecto</h2>
+            </div>
+            <div class="cards">
+                <article class="mini-card">
+                    <span class="icon">CI</span>
+                    <h3>GitHub Actions</h3>
+                    <p>Automatización de pruebas, calidad y entrega continua.</p>
+                </article>
+                <article class="mini-card">
+                    <span class="icon">K8s</span>
+                    <h3>Kubernetes</h3>
+                    <p>Manifiestos para despliegue, servicio, HPA, PDB e ingress.</p>
+                </article>
+                <article class="mini-card">
+                    <span class="icon">OBS</span>
+                    <h3>Observabilidad</h3>
+                    <p>Actuator, Prometheus y dashboards para métricas operativas.</p>
+                </article>
+                <article class="mini-card">
+                    <span class="icon">SEC</span>
+                    <h3>Seguridad</h3>
+                    <p>Reportes y configuración para escaneo con Trivy, Gitleaks y ZAP.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="equipo" class="section team-section">
+            <div>
+                <p class="eyebrow">Integrantes</p>
+                <h2>Equipo del proyecto</h2>
+                <p class="muted">Interfaz lista para personalizar nombres, enlaces y métricas del equipo.</p>
+            </div>
+            <div class="team-grid">
+                <article class="member">Steven Garces</article>
+                <article class="member">Marcelo Chiriboga</article>
+                <article class="member">Christian Yaselga</article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <span>Proyecto DevOps</span>
+        <span>Spring Boot + Frontend estático</span>
+    </footer>
+
+    <script src="/js/app.js" defer></script>
+</body>
+</html>
